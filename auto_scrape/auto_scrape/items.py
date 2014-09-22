@@ -4,8 +4,11 @@
 # http://doc.scrapy.org/topics/items.html
 
 from scrapy.item import Item, Field
+import scrapy
 
 class CraigsListPage(Item):
-	title = scrapy.Field()
-	link  = scrapy.Field()
-	price = scrapy.Field()
+	title 	 	= Field()
+	links  	 	= Field()
+	price 	 	= Field()
+	location 	= Field()
+	description = Field()
