@@ -14,14 +14,12 @@ class AutoSpider(CrawlSpider):
 		allowed_domains = ["craigslist.org"]
 		start_urls = ["http://phoenix.craigslist.org/cto/"]
 
-
 		rules = (
 			Rule(
 			SgmlLinkExtractor(allow_domains=("phoenix.craigslist.org", )),
 			callback = 'parse_page', follow = True
 			),
 		)
-
 
 		def parse_page(self, response):
 			response = HtmlXPathSelector(response)
@@ -37,16 +35,15 @@ class AutoSpider(CrawlSpider):
 				item['location'] = row.select('.//span[@class = "pnr"]/small/text()').extract()
 
 				url = 'http://phoenix.craigslist.org{}'.format(''.join(item['links']))
-				print 'concatenated url: %s ' % url
+				print item['price']
 				print 'item link: %s ' % item['links']
-				yield Request(url = url, meta = {'item': item}, callback = self.parse_item_page)
-
+				yield item
+				#yield Request(url = url, meta = {'item': item}, callback = self.parse_item_page)
 
 		def parse_item_page(self, response):
 			item = response.meta['item']
-
 			hxs = HtmlXPathSelector(response)
 			item['description'] = hxs.select('//section[@id = "postingbody"]/text()').extract()
-			# print item['description']
+
 
 

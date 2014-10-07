@@ -123,3 +123,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   #   chef.validation_client_name = "ORGNAME-validator"
 end
+
+
+$script = <<SCRIPT
+
+echo Hello testing 1 2 3
+sudo apt-get -y install python-scrapy
+
+SCRIPT
+
+
+Vagrant.configure("2") do |config|
+  # ... other configuration
+  config.vm.provision :shell, :inline => $script
+end
