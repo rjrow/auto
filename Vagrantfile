@@ -131,6 +131,9 @@ echo Hello testing 1 2 3
 
 cd /vagrant/auto_scrape
 
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 8F62CB1F627220E7
+sudo apt-get update
+
 sudo apt-key -y adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7
 echo 'deb http://archive.scrapy.org/ubuntu scrapy main' | sudo tee /etc/apt/sources.list.d/scrapy.list
 
