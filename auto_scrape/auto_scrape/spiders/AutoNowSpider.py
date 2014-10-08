@@ -11,15 +11,11 @@ from auto_scrape.items import CraigsListPage
 
 class AutoSpider(CrawlSpider):
 		name = "auto_spider"
-		allowed_domains = ["craigslist.org"]
-		start_urls = ["http://phoenix.craigslist.org/search/cto/"]
+		allowed_domains = ["liftedtrucks.com"]
+		start_urls = ["http://www.liftedtrucks.com/vehicles"]
 
 		rules = (
-			# Rule(
-			# SgmlLinkExtractor(allow_domains=("phoenix.craigslist.org", )),
-			# callback = '', follow = True
-			# ),
-			Rule (SgmlLinkExtractor(allow=("cto", )),
+			Rule (SgmlLinkExtractor(allow=("all", )),
     		callback='parse_page', follow= True),
 		)
 
