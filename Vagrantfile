@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 
-#Test Change 
+#Test Change
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -128,7 +128,13 @@ end
 $script = <<SCRIPT
 
 echo Hello testing 1 2 3
-sudo apt-get -y install python-scrapy
+
+cd /vagrant/auto_scrape
+
+sudo apt-key -y adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 627220E7
+echo 'deb http://archive.scrapy.org/ubuntu scrapy main' | sudo tee /etc/apt/sources.list.d/scrapy.list
+
+sudo apt-get -y update && sudo apt-get -y install scrapy-0.24
 
 SCRIPT
 
