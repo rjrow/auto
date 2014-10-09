@@ -12,3 +12,17 @@ class CraigsListPage(Item):
 	price 	 	= Field()
 	location 	= Field()
 	description = Field()
+
+	odometer	= Field()
+	color		= Field()
+	fuel		= Field()
+	Transm		= Field()
+	tStatus		= Field()
+	condition 	= Field()
+	size		= Field()
+	type		= Field()
+	drive		= Field()
+	cylinders 	= Field()
+
+
+

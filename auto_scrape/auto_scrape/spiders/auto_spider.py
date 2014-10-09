@@ -46,8 +46,20 @@ class AutoSpider(CrawlSpider):
 
 			hxs = HtmlXPathSelector(response)
 			item['description'] = hxs.select('//section[@id = "postingbody"]/text()').extract()
-			print item['description']
+			item['cylinders'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "cylinders")]/b/text()').extract()
+			item['odometer'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "odometer")]/b/text()').extract()
+			item['color'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "color")]/b/text()').extract()
+			item['fuel'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "fuel")]/b/text()').extract()
+			item['Transm'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "Transm")]/b/text()').extract()
+			item['tStatus'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "tStatus")]/b/text()').extract()
+			item['condition'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "condition")]/b/text()').extract()
+			item['size'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "size")]/b/text()').extract()
+			item['type'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "type")]/b/text()').extract()
+			item['drive'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "drive")]/b/text()').extract()
+
+			#item['odometer'] = attrs.select("attrgroup[contains(text(), 'odometer')]/text()").extract()
 			return item
+			#response.xpath('//p[@class = "attrgroup"]//span[contains(text(), "cylinders")]')
 
 
 
