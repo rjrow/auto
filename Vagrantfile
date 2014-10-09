@@ -139,10 +139,16 @@ echo 'deb http://archive.scrapy.org/ubuntu scrapy main' | sudo tee /etc/apt/sour
 
 sudo apt-get -y update && sudo apt-get -y install scrapy-0.24
 
+sudo apt-get install python-pip
+pip install Flask
+
+
+
 SCRIPT
 
 
 Vagrant.configure("2") do |config|
   # ... other configuration
   config.vm.provision :shell, :inline => $script
+    config.vm.network :forwarded_port, host: 4567, guest: 5000
 end
