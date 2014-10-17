@@ -26,3 +26,16 @@ class CraigsListPage(Item):
 
 
 
+class AutoNowPage(Item):
+	title       = Field()
+	description = Field()
+	links 		= Field()
+
+	Transm		= Field()
+	Engine		= Field()
+	Stock		= Field()
+
+
+
+
+
