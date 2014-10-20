@@ -10,7 +10,7 @@ from auto_scrape.items import CraigsListPage
 
 
 class AutoSpider(CrawlSpider):
-		name = "auto_spider"
+		name = "cl_auto_spider"
 		allowed_domains = ["craigslist.org"]
 		start_urls = ["http://phoenix.craigslist.org/search/cto/"]
 

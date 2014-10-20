@@ -140,6 +140,7 @@ echo 'deb http://archive.scrapy.org/ubuntu scrapy main' | sudo tee /etc/apt/sour
 sudo apt-get -y update && sudo apt-get -y install scrapy-0.24
 
 sudo apt-get install python-pip
+sudo apt-get update && sudo apt-get install wine
 pip install Flask
 
 
