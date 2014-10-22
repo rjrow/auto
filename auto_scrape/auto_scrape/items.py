@@ -30,6 +30,7 @@ class AutoNowPage(Item):
 	title       = Field()
 	description = Field()
 	links 		= Field()
+	price		= Field()
 
 	Transm		= Field()
 	Engine		= Field()
