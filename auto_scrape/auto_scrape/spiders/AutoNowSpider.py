@@ -15,7 +15,9 @@ class AutoSpider(CrawlSpider):
 		start_urls = ["http://www.liftedtrucks.com/vehicles"]
 
 		rules = (
-			Rule (SgmlLinkExtractor(allow=("all", )),
+			Rule (SgmlLinkExtractor(allow=("vehicle", ), 
+									deny = ("/trucks", "/all/", "/suvs", "/cars", "/Featured",
+									"/diesel", "/lifted", "/stock", "/form", "page", "/category"),),
     		callback='parse_page', follow= True),
 		)
 
@@ -31,27 +33,6 @@ class AutoSpider(CrawlSpider):
 			rows = response.select('//li[contains(@class, "views-row")]')
 
 			for row in rows:
-				item['price'] = response.select('./div[@class = "views-field-field-price-value"]/' + field_content).extract()
-				item['links'] = response.select('./div[@class = "views-field-phpcode"]/' + \
-					"span[@class = 'field-content']" + '/a/@href').extract()
-				item['title'] = response.select('./div[@class = "views-field-phpcode"]/' + \
-					"span[@class = 'field-content']" + '/a/text()').extract()
-				print item
-
-				for link in item['links']:
-					url = "http://www.liftedtrucks.com" + link
-					yield Request(url = url, meta = {'item': item}, callback = self.parse_item_page)
-
-
-			# item['links']  = link.select("@href").extract()
-
-			# item['price'] = row.select('.//span[@class = "l2"]/span[@class = "price"]/text()').extract()
-			# item['location'] = row.select('.//span[@class = "pnr"]/small/text()').extract()
-
-			# url = 'http://phoenix.craigslist.org{}'.format(''.join(item['links']))
-			# print url
-			# print 'item link: %s ' % item['links']
-			# yield Request(url = url, meta = {'item': item}, callback = self.parse_item_page)
 
 		def parse_item_page(self, response):
 			item = response.meta['item']
