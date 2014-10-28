@@ -15,7 +15,7 @@ class AutoSpider(CrawlSpider):
 		start_urls = ["http://www.liftedtrucks.com/vehicles"]
 
 		rules = (
-			Rule (SgmlLinkExtractor(allow=("vehicle", ), 
+			Rule (SgmlLinkExtractor(allow=("vehicle", ),
 									deny = ("/trucks", "/all/", "/suvs", "/cars", "/Featured",
 									"/diesel", "/lifted", "/stock", "/form", "page", "/category"),),
     		callback='parse_page', follow= True),
@@ -29,10 +29,8 @@ class AutoSpider(CrawlSpider):
 			#link = row.select('.//div[contains(@class, "phpcode")]/a')
 
 			field_content = "span[@class = 'field-content']/text()"
-
 			rows = response.select('//li[contains(@class, "views-row")]')
 
-			for row in rows:
 
 		def parse_item_page(self, response):
 			item = response.meta['item']

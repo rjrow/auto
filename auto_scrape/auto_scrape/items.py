@@ -23,6 +23,7 @@ class CraigsListPage(Item):
 	type		= Field()
 	drive		= Field()
 	cylinders 	= Field()
+	date		= Field()
 
 
 
