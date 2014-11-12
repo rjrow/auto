@@ -56,6 +56,9 @@ class AutoSpider(CrawlSpider):
 			item['size'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "size")]/b/text()').extract()
 			item['type'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "type")]/b/text()').extract()
 			item['drive'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "drive")]/b/text()').extract()
+#			item['date']  = hxs.select('//p[@class = "postinginfo]//time[')
+#			item['pid']
+
 
 			#item['odometer'] = attrs.select("attrgroup[contains(text(), 'odometer')]/text()").extract()
 			return item
