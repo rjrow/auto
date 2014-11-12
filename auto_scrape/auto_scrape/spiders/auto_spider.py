@@ -32,7 +32,6 @@ class AutoSpider(CrawlSpider):
 				link = row.select('.//span[@class = "pl"]/a')
 				item['title']  = link.select('text()').extract()
 				item['links']  = link.select("@href").extract()
-
 				item['price'] = row.select('.//span[@class = "l2"]/span[@class = "price"]/text()').extract()
 				item['location'] = row.select('.//span[@class = "pnr"]/small/text()').extract()
 
@@ -40,6 +39,7 @@ class AutoSpider(CrawlSpider):
 				print url
 				print 'item link: %s ' % item['links']
 				yield Request(url = url, meta = {'item': item}, callback = self.parse_item_page)
+
 
 		def parse_item_page(self, response):
 			item = response.meta['item']
@@ -56,8 +56,8 @@ class AutoSpider(CrawlSpider):
 			item['size'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "size")]/b/text()').extract()
 			item['type'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "type")]/b/text()').extract()
 			item['drive'] = hxs.select('//p[@class = "attrgroup"]//span[contains(text(), "drive")]/b/text()').extract()
-#			item['date']  = hxs.select('//p[@class = "postinginfo]//time[')
-#			item['pid']
+			item['date']  = hxs.select('//p[@class = "postinginfo"]//time/text()').extract()[1]
+			item['pid']   = hxs.select('//p[contains(., "post id:")]/text()').extract()
 
 
 			#item['odometer'] = attrs.select("attrgroup[contains(text(), 'odometer')]/text()").extract()

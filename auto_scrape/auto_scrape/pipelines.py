@@ -4,5 +4,11 @@
 # See: http://doc.scrapy.org/topics/item-pipeline.html
 
 class AutoScrapePipeline(object):
+
+	#def __init__(self):
+
+
+
     def process_item(self, item, spider):
         return item
+

@@ -144,6 +144,9 @@ sudo apt-get update && sudo apt-get install wine
 pip install Flask
 
 
+sudo apt-get -y install r-base-core
+
+
 
 SCRIPT
 
