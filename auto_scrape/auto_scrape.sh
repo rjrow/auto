@@ -6,7 +6,7 @@ _file="data/items_$now.csv"
 
 
 echo "Filename: $_file"
-scrapy crawl cl_auto_spider -o $_file -s DEPTH_LIMIT=10
+scrapy crawl cl_auto_spider -o $_file -s DEPTH_LIMIT=15
 
 
 
